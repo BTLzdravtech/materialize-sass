@@ -595,10 +595,16 @@
             if (typeof callback !== 'undefined') callback();
 
             if (!multiple) {
+                $(this).closest('div.select-wrapper').removeClass('invalid').addClass('valid');
                 $newSelect.trigger('close')
+            } else {
+              if (valuesSelected.length) {
+                $(this).closest('div.select-wrapper').removeClass('invalid').addClass('valid');
+              } else {
+                $(this).closest('div.select-wrapper').removeClass('valid').addClass('invalid');
+              }
             }
             options.find('li.selected').removeClass('selected');
-            $(this).closest('div.select-wrapper').removeClass('invalid').addClass('valid');
           }
 
           e.stopPropagation();
