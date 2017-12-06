@@ -64,6 +64,10 @@
         Used in hover and click handler.
       */
       function placeDropdown(eventType) {
+        var modal = activates.closest('.modal');
+        if (modal.length) {
+          modal.css('overflow', 'visible');
+        }
         // Check for simultaneous focus and click events.
         if (eventType === 'focus') {
           isFocused = true;
@@ -178,6 +182,10 @@
       }
 
       function hideDropdown() {
+        var modal = activates.closest('.modal');
+        if (modal.length) {
+          modal.css('overflow', '');
+        }
         // Check for simultaneous focus and click events.
         isFocused = false;
         activates.fadeOut(curr_options.outDuration);
