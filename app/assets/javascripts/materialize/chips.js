@@ -206,11 +206,7 @@
       $chips.data('chips').forEach(function (elem) {
         $chips.append(self.renderChip(elem));
       });
-      if (curr_options.hidden.enable && curr_options.hidden.required) {
-        $chips.append($('<input id="' + chipId + '" class="input skip-validation" placeholder="">'));
-      } else {
-        $chips.append($('<input id="' + chipId + '" class="input" placeholder="">'));
-      }
+      $chips.append($('<input id="' + chipId + '" class="input skip-validation" placeholder="">'));
       self.setPlaceholder($chips);
 
       // Set for attribute for label
