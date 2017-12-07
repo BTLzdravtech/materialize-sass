@@ -66,6 +66,7 @@
       function placeDropdown(eventType) {
         var modal = activates.closest('.modal');
         if (modal.length) {
+          modal.css('padding-right', (window.innerWidth - modal.prop("scrollWidth")) + 'px');
           modal.css('overflow', 'visible');
         }
         // Check for simultaneous focus and click events.
@@ -184,6 +185,7 @@
       function hideDropdown() {
         var modal = activates.closest('.modal');
         if (modal.length) {
+          modal.css('padding-right', '');
           modal.css('overflow', '');
         }
         // Check for simultaneous focus and click events.
