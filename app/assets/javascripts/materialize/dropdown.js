@@ -64,11 +64,6 @@
         Used in hover and click handler.
       */
       function placeDropdown(eventType) {
-        var modal = activates.closest('.modal');
-        if (modal.length) {
-          modal.css('padding-right', (window.innerWidth - modal.prop("scrollWidth")) + 'px');
-          modal.css('overflow', 'visible');
-        }
         // Check for simultaneous focus and click events.
         if (eventType === 'focus') {
           isFocused = true;
@@ -91,10 +86,11 @@
         }
 
         // Offscreen detection
-        var windowHeight = window.innerHeight;
+        var modal = activates.closest('.modal');
+        var windowHeight = (modal.length) ? modal.innerHeight() : window.innerHeight;
         var originHeight = origin.innerHeight();
         var offsetLeft = origin.offset().left;
-        var offsetTop = origin.offset().top - $(window).scrollTop();
+        var offsetTop = (modal.length) ? origin.offset().top - modal.offset().top : origin.offset().top - $(window).scrollTop();
         var currAlignment = curr_options.alignment;
         var gutterSpacing = 0;
         var leftPosition = 0;
@@ -129,8 +125,10 @@
         if (offsetTop + activates.innerHeight() > windowHeight) {
           // If going upwards still goes offscreen, just crop height of dropdown.
           if (offsetTop + originHeight - activates.innerHeight() < 0) {
-            var adjustedHeight = windowHeight - offsetTop - verticalOffset;
-            activates.css('max-height', adjustedHeight);
+            if (modal.length == 0) {
+              var adjustedHeight = windowHeight - offsetTop - verticalOffset;
+              activates.css('max-height', adjustedHeight);
+            }
           } else {
             // Flow upwards.
             if (!verticalOffset) {
@@ -183,11 +181,6 @@
       }
 
       function hideDropdown() {
-        var modal = activates.closest('.modal');
-        if (modal.length) {
-          modal.css('padding-right', '');
-          modal.css('overflow', '');
-        }
         // Check for simultaneous focus and click events.
         isFocused = false;
         activates.fadeOut(curr_options.outDuration);
