@@ -312,8 +312,9 @@
             hiddenData = hiddenData + $chips.data('chips')[i].tag + ',';
           }
         }
-        $chips.siblings('input[type=hidden]').val(hiddenData);
-        if (curr_options.hidden.required) {
+        hiddenInput = $chips.siblings('input[type=hidden]');
+        hiddenInput.val(hiddenData);
+        if (curr_options.hidden.required || hiddenInput.prop('required')) {
           $chips.removeClass('invalid').addClass('valid')
         }
       }
@@ -343,8 +344,9 @@
             hiddenData = hiddenData + $chips.data('chips')[i].tag + ',';
           }
         }
-        $chips.siblings('input[type=hidden]').val(hiddenData);
-        if (curr_options.hidden.required) {
+        hiddenInput = $chips.siblings('input[type=hidden]');
+        hiddenInput.val(hiddenData);
+        if (curr_options.hidden.required || hiddenInput.prop('required')) {
           if ($chips.data('chips').length) {
             $chips.removeClass('invalid').addClass('valid')
           } else {
