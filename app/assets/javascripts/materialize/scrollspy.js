@@ -144,8 +144,8 @@
 		var throttledScroll = Materialize.throttle(function () {
 			onScroll(options.scrollOffset);
 		}, options.throttle || 100);
-		var readyScroll = function () {
-			$(document).on('ready turbolinks:load', throttledScroll);
+		var readyScroll = function(){
+			$(document).on('turbolinks:load', throttledScroll);
 		};
 
 		if (!isSpying) {

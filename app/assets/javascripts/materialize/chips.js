@@ -11,7 +11,7 @@
     }
   };
 
-  $(document).on('ready turbolinks:load', function () {
+  $(document).on('turbolinks:load', function() {
     // Handle removal of static chips.
     $(document).on('click', '.chip .close', function (e) {
       var $chips = $(this).closest('.chips');

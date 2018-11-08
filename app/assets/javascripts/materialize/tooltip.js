@@ -221,7 +221,7 @@
     return { x: newX, y: newY };
   };
 
-  $(document).on('ready turbolinks:load', function () {
-    $('.tooltipped').tooltip();
-  });
-})(jQuery);
+  $(document).on('turbolinks:load', function(){
+     $('.tooltipped').tooltip();
+   });
+}( jQuery ));

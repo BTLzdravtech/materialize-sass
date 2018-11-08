@@ -238,7 +238,7 @@
     }
   };
 
-  $(document).on('ready turbolinks:load', function () {
+  $(document).on('turbolinks:load', function(){
     $('ul.tabs').tabs();
   });
 })(jQuery);
