@@ -153,6 +153,10 @@
         var $currChips = $(e.target).closest(SELS.CHIPS);
         $currChips.removeClass('focus');
 
+        if ($currChips.hasClass('chipOnLeave')) {
+          self.addChip({ tag: $currChips.find('input').val() }, $(e.target).closest(SELS.CHIPS));
+        }
+
         // Remove active if empty
         if ($currChips.data('chips') === undefined || !$currChips.data('chips').length) {
           $currChips.siblings('label').removeClass('active');
